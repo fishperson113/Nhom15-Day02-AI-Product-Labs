@@ -1,0 +1,149 @@
+<svg width="1000" height="700" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <filter id="shadow-sm" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444"/>
+    </marker>
+    <linearGradient id="bg-channel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="bg-ai" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faf5ff"/>
+      <stop offset="100%" stop-color="#ede9fe"/>
+    </linearGradient>
+    <linearGradient id="bg-response" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+    <linearGradient id="bg-trigger" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </linearGradient>
+    <linearGradient id="bg-action" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff1f2"/>
+      <stop offset="100%" stop-color="#ffe4e6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="700" fill="#f8fafc" rx="12"/>
+
+  <!-- Title -->
+  <text x="500" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a" letter-spacing="1">KIẾN TRÚC HỆ THỐNG AI SALE AGENT</text>
+  <line x1="300" y1="50" x2="700" y2="50" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- ============ ROW 1: CHANNELS ============ -->
+  <rect x="30" y="65" width="940" height="95" rx="10" fill="#f1f5f9" opacity="0.5"/>
+  <text x="50" y="85" font-size="12" font-weight="600" fill="#64748b" text-transform="uppercase" letter-spacing="1">① KÊNH GIAO TIẾP</text>
+
+  <!-- Facebook SDK -->
+  <rect x="80" y="95" width="240" height="52" rx="10" fill="url(#bg-channel)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="200" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">Facebook SDK</text>
+  <text x="200" y="135" text-anchor="middle" font-size="11" fill="#64748b">Messenger / Comment / Ads</text>
+
+  <!-- Zalo SDK -->
+  <rect x="380" y="95" width="240" height="52" rx="10" fill="url(#bg-channel)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="500" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">Zalo SDK</text>
+  <text x="500" y="135" text-anchor="middle" font-size="11" fill="#64748b">Zalo OA / ZNS / Mini App</text>
+
+  <!-- Shopee SDK -->
+  <rect x="680" y="95" width="240" height="52" rx="10" fill="url(#bg-channel)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="800" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">Shopee SDK</text>
+  <text x="800" y="135" text-anchor="middle" font-size="11" fill="#64748b">Shopee Chat / Shopee API</text>
+
+  <!-- Arrows from channels to AI -->
+  <path d="M 200 147 L 200 172 Q 200 182 210 182 L 480 182 Q 490 182 490 192 L 490 217" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 500 147 L 500 217" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M 800 147 L 800 172 Q 800 182 790 182 L 520 182 Q 510 182 510 192 L 510 217" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- ============ ROW 2: AI PROCESSING ============ -->
+  <rect x="30" y="230" width="940" height="95" rx="10" fill="#f1f5f9" opacity="0.5"/>
+  <text x="50" y="250" font-size="12" font-weight="600" fill="#64748b" text-transform="uppercase" letter-spacing="1">② XỬ LÝ AI</text>
+
+  <!-- n8n AI Agent -->
+  <rect x="300" y="260" width="400" height="55" rx="12" fill="url(#bg-ai)" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="500" y="283" text-anchor="middle" font-size="16" font-weight="700" fill="#6d28d9">n8n AI Agent</text>
+  <text x="500" y="301" text-anchor="middle" font-size="11" fill="#7c3aed">LLM + Workflow Engine + Tool Calling</text>
+
+  <!-- Arrow from AI to response + classify -->
+  <path d="M 380 315 L 380 340 Q 380 350 370 350 L 260 350 Q 250 350 250 360 L 250 385" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 620 315 L 620 340 Q 620 350 630 350 L 740 350 Q 750 350 750 360 L 750 385" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+
+  <!-- ============ ROW 3: AI RESPONSE ============ -->
+  <rect x="30" y="395" width="940" height="95" rx="10" fill="#f1f5f9" opacity="0.5"/>
+  <text x="50" y="415" font-size="12" font-weight="600" fill="#64748b" text-transform="uppercase" letter-spacing="1">③ PHẢN HỒI & PHÂN LOẠI</text>
+
+  <!-- Auto Response -->
+  <rect x="90" y="425" width="320" height="52" rx="10" fill="url(#bg-response)" stroke="#10b981" stroke-width="2" filter="url(#shadow)"/>
+  <text x="250" y="448" text-anchor="middle" font-size="15" font-weight="700" fill="#047857">Tự động trả lời KH</text>
+  <text x="250" y="465" text-anchor="middle" font-size="11" fill="#6b7280">Giá, tồn kho, chính sách, gợi ý SP</text>
+
+  <!-- Lead Classification -->
+  <rect x="590" y="425" width="320" height="52" rx="10" fill="url(#bg-response)" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="750" y="448" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">Phân tích & Đánh giá Lead</text>
+  <text x="750" y="465" text-anchor="middle" font-size="11" fill="#6b7280">Nóng / Ấm / Lạnh + Thu thập thông tin</text>
+
+  <!-- Arrow - Auto Response back to customer (curved right side) -->
+  <path d="M 410 451 L 440 451 Q 450 451 450 441 L 450 140 Q 450 130 440 130 L 320 130 Q 320 130 320 147" stroke="#10b981" stroke-width="2" stroke-dasharray="6,3" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="460" y="295" font-size="11" fill="#10b981" font-weight="600" transform="rotate(90,460,295)">Phản hồi về KH</text>
+
+  <!-- Arrow - Lead Classification down to trigger -->
+  <path d="M 750 477 L 750 542" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrow-amber)"/>
+
+  <!-- ============ ROW 4: TRIGGER RULES ============ -->
+  <rect x="30" y="550" width="940" height="135" rx="10" fill="#f1f5f9" opacity="0.5"/>
+  <text x="50" y="570" font-size="12" font-weight="600" fill="#64748b" text-transform="uppercase" letter-spacing="1">④ TRIGGER RULES — ĐIỀU HƯỚNG LEAD</text>
+
+  <!-- Hot Lead -->
+  <rect x="80" y="580" width="250" height="52" rx="10" fill="url(#bg-trigger)" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+  <text x="205" y="604" text-anchor="middle" font-size="14" font-weight="700" fill="#b91c1c">🔥 Hot Lead</text>
+  <text x="205" y="621" text-anchor="middle" font-size="11" fill="#6b7280">Ưu tiên phục vụ ngay lập tức</text>
+
+  <!-- Sale Online Check -->
+  <rect x="375" y="580" width="250" height="52" rx="10" fill="url(#bg-trigger)" stroke="#f59e0b" stroke-width="2" filter="url(#shadow)"/>
+  <text x="500" y="604" text-anchor="middle" font-size="14" font-weight="700" fill="#b45309">👤 Sale đang Online?</text>
+  <text x="500" y="621" text-anchor="middle" font-size="11" fill="#6b7280">Kiểm tra trạng thái Sale</text>
+
+  <!-- Create Ticket -->
+  <rect x="670" y="580" width="250" height="52" rx="10" fill="url(#bg-trigger)" stroke="#6b7280" stroke-width="2" filter="url(#shadow)"/>
+  <text x="795" y="604" text-anchor="middle" font-size="14" font-weight="700" fill="#374151">🎫 Tạo Ticket Hỗ trợ</text>
+  <text x="795" y="621" text-anchor="middle" font-size="11" fill="#6b7280">Khi không có Sale trực</text>
+
+  <!-- Arrow paths for trigger rules -->
+  <!-- Arrow from classify to hot lead AND sale check -->
+  <path d="M 750 542 L 750 558 Q 750 565 742 565 L 205 565 Q 205 565 205 580" stroke="#ef4444" stroke-width="2" fill="none" marker-end="url(#arrow-red)"/>
+  <path d="M 750 542 L 750 558 Q 750 565 755 565 L 500 565 L 500 580" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrow-amber)"/>
+
+  <!-- Arrows from Check Sale to next actions -->
+  <path d="M 500 632 L 500 648 Q 500 655 490 655 L 410 655 L 410 648" stroke="#3b82f6" stroke-width="2" fill="none"/>
+  <!-- Yes: Assign to Sale -->
+  <path d="M 410 648 L 410 655 Q 410 660 420 660 L 500 660 Q 510 660 510 670 L 510 680" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <!-- No: Create Ticket (already the ticket box) -->
+  <path d="M 625 606 L 670 606" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Arrow Hot Lead to Serve Immediately -->
+  <path d="M 205 632 L 205 660 Q 205 670 215 670 L 300 670 Q 310 670 310 680 L 310 690" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,3" fill="none" marker-end="url(#arrow-red)"/>
+
+  <!-- ============ Extra annotation: n8n out to response ============ -->
+
+  <!-- Bottom legend -->
+  <rect x="30" y="15" width="940" height="0"/>
+</svg>
