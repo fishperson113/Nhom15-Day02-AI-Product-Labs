@@ -43,6 +43,16 @@ Nếu có file phụ như ảnh workflow, Mermaid, survey screenshot, research n
 2. Làm theo `01-worksheet.md` từ Phase 1 đến Phase 7. Worksheet là hướng dẫn suy nghĩ theo từng bước, không chỉ là form để điền.
 3. Khi nộp, repo cá nhân cần có đủ 3 phần: problem scan cá nhân, bản nộp nhóm, reflection cá nhân.
 
+## Cách mở slide trình bày
+
+File slide nằm ở [presentation.html](presentation.html). Trên Windows, bạn có thể mở nó theo một trong 3 cách sau:
+
+1. Bấm đúp trực tiếp vào file `presentation.html` để mở bằng trình duyệt mặc định.
+2. Chuột phải file rồi chọn mở bằng Chrome hoặc Edge nếu muốn trình chiếu ổn định hơn.
+3. Nếu đang dùng VS Code, bấm vào link [presentation.html](presentation.html) rồi chọn mở trong browser.
+
+Slide chạy trực tiếp từ file HTML, không cần cài thêm server.
+
 ## Tiêu chí đánh giá (100 điểm)
 
 Điểm của mỗi học viên gồm **điểm nhóm 60 điểm** và **điểm cá nhân 40 điểm**. Điểm nhóm là điểm cho bản nộp nhóm; mỗi học viên vẫn copy bản cuối vào repo cá nhân của mình. Bài làm không cần chọn Agent mới được điểm cao. Điểm nằm ở việc nhóm hiểu đúng bài toán, lập luận rõ, biết vì sao nên hoặc không nên dùng AI.
