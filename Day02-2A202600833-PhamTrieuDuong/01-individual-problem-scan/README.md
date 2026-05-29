@@ -1,230 +1,167 @@
 # 01 — Individual Problem Scan
 
-> Mục tiêu của phần này là scan rộng trước khi hội tụ. Tôi giữ 5 ý tưởng AI khác nhau, sau đó chọn top 3 để pitch với nhóm. Ý tưởng tôi muốn đào sâu nhất là Telegram cron job bot đọc invoices timeseries để phát hiện outlier và trích insight theo custom nghiệp vụ của từng khách hàng.
+> Mục tiêu: scan rộng 5 ý tưởng AI, chọn Top 3 để pitch.
 
-## 1. Danh sách 5 ý tưởng AI
+## 1. Danh sách 5 ý tưởng AI (tóm tắt)
 
 | # | Ý tưởng | Người gặp vấn đề | Vấn đề thật | Vì sao đáng xem xét |
 |---|---|---|---|---|
-| 1 | Telegram cron job bot phân tích outlier invoices | Kế toán / finance / ops | Mỗi ngày có nhiều invoice, khó nhìn ra giao dịch bất thường nếu chỉ xem mean, mode, avg, max | Có workflow lặp lại, có dữ liệu timeseries, có thể custom rule theo từng khách hàng |
-| 2 | AI Sale Agent đa kênh | Shop online / sale | Tin nhắn đầu vào quá nhiều, phản hồi chậm, sàng lọc lead tốn thời gian | Workflow rõ, metric rõ, dễ vẽ before/after |
-| 3 | AI weekly report assistant | PM / team lead | Mỗi tuần phải gom số liệu và viết narrative từ nhiều nguồn | Tốt cho workflow + narrative, dễ đo thời gian |
-| 4 | AI support ticket triage | Customer support / ops | Ticket đến nhiều, phân loại thủ công chậm | Có thể route theo intent, priority, SLA |
-| 5 | AI meeting action tracker | Team vận hành / PM | Sau họp hay rơi action item, khó follow-up | Có pain thật, nhiều bước lặp, dễ dùng AI để tóm tắt và nhắc việc |
+| 1 | Telegram cron job bot phân tích outlier invoices | Kế toán / finance / ops | Khó phát hiện outlier ý nghĩa từ invoice timeseries | Dữ liệu timeseries rõ, workflow lặp, cần custom rule |
+| 2 | AI Sale Agent đa kênh | Shop online / sale | Tin nhắn nhiều, phản hồi chậm, mất lead | Metric rõ (FRT, conversion), dễ pilot |
+| 3 | AI weekly report assistant | PM / team lead | Gom dữ liệu và viết narrative tốn thời gian | Lặp lại hàng tuần, AI tạo draft hữu dụng |
+| 4 | AI support ticket triage | Support / ops | Phân loại ticket thủ công chậm, backlog | Có thể route theo intent/priority/SLA |
+| 5 | AI meeting action tracker | Team / PM | Action items bị rơi, khó follow-up | Có dấu hiệu thực tế, dễ demo |
 
-## 2. Scan chi tiết từng ý tưởng
+## 2. Scan chi tiết (mỗi ý tưởng tóm tắt theo phong cách Problem Card)
 
-### 1) Telegram cron job bot phân tích outlier invoices
-
-- **Actor:** kế toán, finance lead, ops manager, chủ shop.
-- **Bối cảnh:** bot chạy theo cron trong Telegram, đọc dữ liệu invoice theo thời gian, phát hiện giao dịch bất thường hoặc pattern lạ.
-- **Pain:** người dùng thường chỉ nhìn dashboard tổng quan như mean, mode, avg, max nhưng không thấy outlier có ý nghĩa kinh doanh.
-- **Dấu hiệu thật:** invoice tăng đột biến, hóa đơn lặp, giao dịch lệch khung giờ, một khách hàng có pattern khác thường so với baseline.
-- **Điểm mạnh:** có thể custom rule theo từng khách hàng, từng ngành, từng mốc thời gian.
-
-### 2) AI Sale Agent đa kênh
-
-- **Actor:** shop online, sale, khách hàng.
-- **Bối cảnh:** khách nhắn trên Shopee, TikTok, Facebook, Zalo.
-- **Pain:** sale không phản hồi kịp và phải lặp đi lặp lại cùng một kiểu hỏi đáp.
-- **Dấu hiệu thật:** lead chờ lâu, spam nhiều, sale mất thời gian lọc.
-- **Điểm mạnh:** metric rõ, workflow rõ, dễ pilot.
-
-### 3) AI weekly report assistant
-
-- **Actor:** PM, team lead, manager.
-- **Bối cảnh:** cuối tuần hoặc đầu tuần phải tổng hợp report từ Jira, Sheets, Slack, docs.
-- **Pain:** mất thời gian viết narrative.
-- **Dấu hiệu thật:** lặp lại mỗi tuần, dễ trễ deadline.
-- **Điểm mạnh:** AI làm tốt phần draft, người thật review được.
-
-### 4) AI support ticket triage
-
-- **Actor:** support agent, ops.
-- **Bối cảnh:** ticket từ nhiều kênh đổ về một inbox.
-- **Pain:** phân loại chậm, ticket urgent dễ bị chậm xử lý.
-- **Dấu hiệu thật:** SLA trễ, ticket backlog tăng.
-- **Điểm mạnh:** có thể route theo intent, mức độ khẩn, nhóm xử lý.
-
-### 5) AI meeting action tracker
-
-- **Actor:** team member, PM, manager.
-- **Bối cảnh:** sau họp có nhiều action item, nhưng không ai theo dõi xuyên suốt.
-- **Pain:** action bị rơi, phải hỏi lại nhiều lần.
-- **Dấu hiệu thật:** meeting notes có nhiều việc nhưng thiếu owner hoặc deadline.
-- **Điểm mạnh:** AI tóm tắt, nhắc việc, và theo dõi trạng thái.
-
-## 3. Top 3 Problem Cards
-
-### Top 1 — Telegram cron job bot phân tích outlier invoices
+### 1) Telegram cron job bot — phân tích outlier invoices
 
 **Problem 1 câu:**
-Mỗi ngày team finance phải đọc invoice timeseries và tự phát hiện outlier theo ngữ cảnh riêng của từng khách hàng, nhưng cách làm hiện tại chỉ dừng ở các thống kê tổng quát nên dễ bỏ sót tín hiệu quan trọng.
+Team finance phải đọc hàng loạt invoice timeseries để tự phát hiện outlier theo ngữ cảnh khách hàng; phương pháp hiện tại chỉ dựa trên thống kê tổng quát nên dễ bỏ sót tín hiệu quan trọng.
 
 **Actor:**
-Finance, kế toán, ops, owner.
+Kế toán, finance lead, ops manager, chủ shop.
 
-**Workflow hiện tại:**
+**Bối cảnh:**
+Bot chạy theo lịch (cron), nhận dữ liệu invoice hoặc batch export, gửi cảnh báo/insight qua Telegram để user review và điều chỉnh nghiệp vụ.
 
-```text
-1. Nhận invoice data theo ngày/tuần/tháng
-2. Xem dashboard tổng quát
-3. So sánh mean / mode / avg / max
-4. Tự dò bất thường bằng mắt
-5. Kết luận thủ công
-6. Nếu nghi ngờ thì hỏi lại bên liên quan
-```
+**Dấu hiệu thật:**
+- Invoice tăng đột biến hoặc lặp
+- Giao dịch lệch khung giờ bất thường
+- Một khách hàng có pattern khác biệt so với baseline
 
 **Bottleneck:**
-Bước 4 và 5. Người xem phải tự suy ra outlier, trong khi mỗi khách hàng có định nghĩa bất thường khác nhau.
+Con người phải nhìn và so sánh nhiều biểu đồ/giá trị, khó tùy biến cho từng khách hàng.
 
 **Impact:**
-Bỏ sót invoice bất thường, phát hiện muộn, khó giải thích insight cho business.
+Bỏ sót alert quan trọng, phát hiện muộn, tốn thời gian giải thích cho business.
 
 **Success metric:**
-Giảm thời gian phát hiện outlier, tăng số outlier có ý nghĩa được phát hiện đúng, và giảm số case phải xem lại thủ công.
+- Giảm thời gian phát hiện outlier (chuẩn hóa)
+- Tăng tỉ lệ outlier có ý nghĩa được phát hiện đúng
+- Giảm số case cần review thủ công
 
 **Non-AI alternative:**
-Rule-based threshold hoặc dashboard BI có thể báo alert cơ bản, nhưng khó tùy biến theo từng khách hàng và từng kiểu bất thường.
+Rule-based thresholds trên BI dashboards (hiệu quả hạn chế, khó tùy biến theo ngữ cảnh khách hàng).
 
 **AI hypothesis:**
-AI đọc timeseries, nhận biết multiple outlier patterns, tóm tắt insight, và hỏi lại khi rule nghiệp vụ chưa đủ rõ.
+Kết hợp thuật toán phát hiện bất thường (statistical + ML) với rule-engine tùy chỉnh: AI tóm tắt pattern, giải thích vì sao là outlier, gợi ý rule để áp dụng.
 
 **Quick gut:**
-Agent kết hợp rule.
+Agent (bot) + rule là hướng khả thi, dễ demo và pilot trên dữ liệu thật.
 
-### Top 2 — AI Sale Agent đa kênh
+### 2) AI Sale Agent đa kênh (tóm tắt)
 
 **Problem 1 câu:**
-Shop online mất nhiều lead vì phản hồi chậm và phải sàng lọc chat thủ công trước khi tư vấn.
+Shop online mất lead vì phản hồi chậm và phải lặp thủ công các câu trả lời cơ bản.
 
 **Actor:**
-Shop online, sale.
+Shop owner, sales agent.
 
 **Bottleneck:**
-Sale chỉ xử lý một thread tại một thời điểm.
+Phải xử lý hàng loạt thông điệp thủ công, lọc spam và phân loại intent.
 
-**Metric:**
-First response time, missed lead rate, conversion rate.
+**Metric thành công:**
+Giảm First Response Time, giảm missed lead rate, tăng conversion.
 
-**Quick gut:**
-Agent.
-
-**Draft current workflow:**
-
-```text
-1. Khách nhắn tin trên kênh bán hàng
-2. Sale đọc tin nhắn thủ công
-3. Sale tự phân loại: spam / hỏi giá / có ý định mua
-4. Sale trả lời từng câu hỏi lặp lại
-5. Nếu có khả năng mua, sale hỏi thêm thông tin
-6. Chốt đơn hoặc chuyển sale khác
-```
-
-**Draft future workflow:**
-
-```text
-1. Khách nhắn tin trên kênh bán hàng
-2. AI phản hồi trong vài giây
-3. AI phân loại intent và lọc spam
-4. AI trả lời các câu hỏi lặp lại
-5. AI hỏi thêm thông tin lead nếu cần
-6. AI handoff cho sale khi đủ tín hiệu mua hoặc khi confidence thấp
-```
-
-### Top 3 — AI weekly report assistant
+### 3) AI Weekly Report Assistant (tóm tắt)
 
 **Problem 1 câu:**
-PM mất nhiều thời gian viết weekly report từ nhiều nguồn khác nhau và dễ trễ deadline.
+PM mất thời gian gom nhiều nguồn (Jira, Sheets, Slack) để viết weekly report narrative.
 
 **Actor:**
-PM / team lead.
+PM, team lead.
 
 **Bottleneck:**
-Viết narrative từ raw data.
+Viết narrative từ raw data, cấu trúc và làm rõ insight.
 
-**Metric:**
-Giảm thời gian soạn report, giảm số lần sửa sau review.
+
+## 3. Top 3
+
+| Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
+|---|---|---|---|
+| 1 | Telegram cron job bot phân tích outlier invoices | Data rõ, workflow lặp, có thể pilot nhanh | Mức độ chính xác và explainability của AI trên dữ liệu thật |
+| 2 | AI Sale Agent đa kênh | Metric rõ, giá trị trực tiếp cho doanh thu | Hand-off giữa AI và sale có mượt không |
+| 3 | AI weekly report assistant | Tiết kiệm thời gian lặp, dễ demo | Chất lượng narrative ban đầu cần human-in-loop |
+
+
+## Problem Card — Telegram cron job bot (chi tiết theo phong cách `NguyenVietDu`)
+
+**Problem 1 câu:**
+Mỗi ngày finance phải dò hàng loạt invoice timeseries để tìm tín hiệu bất thường; phương pháp thủ công dễ bỏ sót và tốn thời gian.
+
+**Actor:**
+Kế toán, finance lead, ops.
+
+**Thời điểm / bối cảnh:**
+Sau khi có dữ liệu ngày/tuần/tháng, user cần rà soát để phát hiện outlier hoặc pattern đáng chú ý và có thể điều chỉnh rule nghiệp vụ.
+
+**Current workflow:**
+
+```text
+1. Export/receive invoice data
+2. Mở dashboard/Excel để xem thống kê tổng quát
+3. So sánh mean/median/max và duyệt từng mục đáng nghi
+4. Nếu nghi ngờ, mở chi tiết invoice để xác minh
+5. Ghi nhận và trao đổi với bên liên quan
+```
+
+**Bottleneck:**
+Con người phải đọc nhiều biểu đồ/bảng, tốn thời gian và gặp khó khăn khi cần tuỳ biến theo từng khách hàng.
+
+**Impact:**
+Phát hiện muộn, tốn công verify, khó giải thích cho business.
+
+**Success metric:**
+- Giảm thời gian detect xuống 1/3 so với hiện tại
+- Tăng precision của alerts khi pilot trên 1 khách hàng mẫu
+
+**AI hypothesis:**
+AI tổng hợp features timeseries, phát hiện multiple outlier patterns, sinh explanation ngắn gọn và gợi ý rule để áp dụng.
 
 **Quick gut:**
-Workflow.
+Pilot khả thi với 1-2 khách hàng có dữ liệu sạch; Telegram làm giao diện feedback nhanh.
 
-**Draft current workflow:**
-
-```text
-1. Mở Jira / Sheets / Slack
-2. Tự gom số liệu từng nguồn
-3. Đọc lại context tuần
-4. Viết narrative bằng tay
-5. Review và chỉnh format
-6. Gửi cho team lead / manager
-```
-
-**Draft future workflow:**
+**Draft current workflow (thời lượng ước tính):**
 
 ```text
-1. Auto pull data từ Jira / Sheets / Slack
-2. AI cấu trúc dữ liệu đầu vào
-3. AI draft narrative và highlight
-4. PM review, sửa và bổ sung context
-5. Gửi report cuối
+CURRENT — tốn thời gian
+[1 Export data: 5']
+→ [2 Mở và scan dashboard: 30']
+→ [3 Dò biểu đồ & filter suspicious: 60']  <-- bottleneck
+→ [4 Mở invoice chi tiết & verify: 40']
+→ [5 Trao đổi + ghi nhận: 15']
 ```
 
-## 4. Vì sao tôi chọn Telegram cron job bot là hướng mạnh nhất cho cá nhân
+**Draft future workflow (ước tính):**
 
-- Có dữ liệu dạng timeseries rõ ràng.
-- Có bài toán phát hiện outlier cụ thể, không chỉ là thống kê mô tả.
-- Có thể tùy biến nghiệp vụ theo từng khách hàng, từng ngành, từng ngưỡng bất thường.
-- Có sự kết hợp hợp lý giữa rule, workflow và AI, thay vì để AI làm mọi thứ.
-- Có tiềm năng thành sản phẩm thật vì đầu ra là insight, cảnh báo và giải thích, không chỉ là một report tĩnh.
-
-## 5. Draft workflow cho Telegram cron job bot
-
-### Workflow hiện tại
-
-```mermaid
-flowchart TD
-    A[Invoice data từ hệ thống] --> B[Người dùng export / mở dashboard]
-    B --> C[Xem mean, mode, avg, max]
-    C --> D[Tự dò bất thường bằng mắt]
-    D --> E{Có thấy tín hiệu lạ?}
-    E -->|Có| F[Đọc sâu từng invoice]
-    E -->|Không| G[Bỏ qua]
-    F --> H[Hỏi lại bên liên quan]
-    H --> I[Kết luận thủ công]
+```text
+FUTURE — tối ưu
+[1 Cron job upload data -> bot: 2']
+→ [2 AI detect & summarize outliers: 3']
+→ [3 User review trên Telegram + confirm/annotate: 10']  <-- human-in-loop
+→ [4 AI generate suggested rule / explanation: 2']
+→ [5 Apply rule hoặc schedule deeper review: tùy]
 ```
 
-### Workflow sau tối ưu
+**Fallback:**
+Nếu AI tạo alert sai hoặc thiếu, user có thể mark false-positive; hệ thống sẽ dùng feedback để điều chỉnh rule/threshold.
 
-```mermaid
-flowchart TD
-    A[Invoice data theo lịch cron] --> B[Telegram bot nhận data]
-    B --> C[Tiền xử lý timeseries]
-    C --> D[Phát hiện multiple outlier]
-    D --> E{Có cần custom rule?}
-    E -->|Có| F[Áp rule nghiệp vụ theo khách hàng]
-    E -->|Không| G[Tạo insight tự động]
-    F --> G
-    G --> H[Gửi alert + giải thích trên Telegram]
-    H --> I{User xác nhận / phản hồi}
-    I --> J[Điều chỉnh rule / threshold]
-```
 
-### Điểm tôi muốn nhấn mạnh
+## 4. Vì sao tôi chọn ý tưởng này để pilot
 
-1. Bot không chỉ tạo báo cáo mean/mode/avg/max.
-2. Bot tập trung vào multiple outlier và giải thích vì sao nó là outlier.
-3. Business rule của từng khách hàng là phần phải custom, không thể một threshold dùng cho tất cả.
-4. Telegram chỉ là giao diện nhanh để nhận alert, feedback và điều chỉnh rule.
+- Dữ liệu dạng timeseries sẵn có, dễ prepare cho POC.
+- Bài toán rõ ràng: detection & explanation.
+- Có thể kết hợp rule-engine để tăng độ tin cậy.
+- Giao diện Telegram phù hợp cho feedback nhanh và iterative loop.
 
-## 6. Kết luận scan
 
-Sau vòng scan này, tôi thấy 2 ý tưởng mạnh nhất là:
+## 5. Next steps (gợi ý roadmap ngắn)
 
-1. Telegram cron job bot phân tích outlier invoices.
-2. AI Sale Agent đa kênh.
-
-Hai ý tưởng còn lại tôi giữ như candidate phụ để bảo đảm scan rộng, không bị khóa sớm vào một giải pháp.
+1. Chọn 1 khách hàng mẫu và lấy dataset export (1 tuần)
+2. Xây pipeline tiền xử lý và baseline outlier detection (2 tuần)
+3. Tạo Telegram bot pilot, tích hợp feedback loop (1 tuần)
+4. Đo metric, refine rule và mở rộng (liên tục)
 
 ---
 
