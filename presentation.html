@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Sale Agent — Product Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #0a0e17;
+    color: #e2e8f0;
+    overflow: hidden;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .slides-container {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+    height: 100vh;
+  }
+
+  .slide {
+    min-width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 56px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ===== Slide Backgrounds ===== */
+  .slide-title {
+    background: #0a0e17;
+  }
+  .slide-title .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .slide-title .orb-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(59,130,246,0.15), transparent);
+    top: -200px; right: -200px;
+  }
+  .slide-title .orb-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(139,92,246,0.12), transparent);
+    bottom: -200px; left: -150px;
+  }
+  .slide-title .orb-3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(16,185,129,0.08), transparent);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
+
+  .slide-dark {
+    background: #0a0e17;
+  }
+  .slide-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139,92,246,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .slide-gradient {
+    background: linear-gradient(160deg, #0a0e17 0%, #0f1a2e 40%, #0a0e17 100%);
+  }
+  .slide-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 0% 50%, rgba(59,130,246,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 70% at 100% 30%, rgba(139,92,246,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* ===== Grid pattern overlay ===== */
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* ===== Content ===== */
+  .slide-content {
+    max-width: 1040px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== Typography ===== */
+  h1 {
+    font-size: 58px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #f0f9ff 0%, #93c5fd 40%, #c4b5fd 70%, #f0f9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #f1f5f9;
+    margin-bottom: 28px;
+    position: relative;
+    display: inline-block;
+  }
+  h2 .accent-line {
+    display: block;
+    width: 48px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  p, li {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #94a3b8;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: #64748b;
+    font-weight: 400;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-green {
+    background: linear-gradient(135deg, #34d399, #6ee7b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-red {
+    background: linear-gradient(135deg, #f87171, #fca5a5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-amber {
+    background: linear-gradient(135deg, #fbbf24, #fcd34d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ===== Glass Cards ===== */
+  .glass {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(71, 85, 105, 0.25);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glass-card {
+    padding: 24px;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .glass-card:hover {
+    border-color: rgba(59,130,246,0.35);
+    transform: translateY(-1px);
+  }
+  .glass-card .card-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .glass-card .card-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .glass-card .card-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #e2e8f0;
+    line-height: 1.6;
+  }
+
+  /* ===== Metric Cards ===== */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .metric-card {
+    text-align: center;
+    padding: 20px 16px;
+    border-radius: 14px;
+    position: relative;
+    isolation: isolate;
+  }
+  .metric-card .metric-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    opacity: 0.06;
+    z-index: -1;
+  }
+  .metric-card .metric-value {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .metric-card .metric-label {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  .metric-card .metric-sublabel {
+    font-size: 11px;
+    color: #475569;
+    margin-top: 2px;
+  }
+
+  /* ===== Grid Layouts ===== */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* ===== Step/Flow Items ===== */
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+  }
+  .step-item .step-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* ===== Tags ===== */
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .tag-sm {
+    padding: 2px 10px;
+    font-size: 11px;
+  }
+
+  /* ===== Table ===== */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .comp-table thead th {
+    padding: 12px 14px;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+    text-align: left;
+  }
+  .comp-table thead th:first-child { width: 26%; }
+  .comp-table tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(71, 85, 105, 0.12);
+    color: #94a3b8;
+    font-size: 13px;
+  }
+  .comp-table tbody tr:last-child td { border-bottom: none; }
+  .comp-table tbody tr:hover td { background: rgba(59,130,246,0.03); }
+  .comp-table .col-agent {
+    background: rgba(59,130,246,0.06);
+    position: relative;
+  }
+  .comp-table .col-agent::after {
+    content: '✓ CHỌN';
+    position: absolute;
+    top: 0; right: 0;
+    font-size: 9px;
+    font-weight: 700;
+    color: #3b82f6;
+    background: rgba(59,130,246,0.12);
+    padding: 2px 8px;
+    border-radius: 0 8px 0 8px;
+    letter-spacing: 0.5px;
+  }
+  .comp-table .td-good { color: #34d399; font-weight: 600; }
+  .comp-table .td-bad { color: #f87171; }
+  .comp-table .td-mid { color: #fbbf24; }
+
+  /* ===== Value Comparisons (Before → After) ===== */
+  .metric-compare {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .metric-compare .before {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f87171;
+  }
+  .metric-compare .arrow {
+    color: #334155;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  .metric-compare .after {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #34d399, #6ee7b7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ===== Timeline ===== */
+  .timeline {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .timeline-item {
+    flex: 1;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(71, 85, 105, 0.15);
+    transition: all 0.2s;
+  }
+  .timeline-item:hover {
+    border-color: rgba(59,130,246,0.3);
+    background: rgba(30, 41, 59, 0.5);
+  }
+  .timeline-item .tl-week {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .timeline-item .tl-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 4px;
+  }
+  .timeline-item .tl-desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.5;
+  }
+
+  /* ===== SVG Container ===== */
+  .svg-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .svg-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ===== Navigation ===== */
+  .nav-bar {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(10, 14, 23, 0.85);
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    border-radius: 40px;
+    padding: 8px 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 100;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .nav-btn {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-family: inherit;
+    line-height: 1;
+  }
+  .nav-btn:hover {
+    background: rgba(59,130,246,0.12);
+    color: #60a5fa;
+  }
+  .nav-dots {
+    display: flex;
+    gap: 6px;
+    padding: 0 10px;
+  }
+  .nav-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #334155;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    padding: 0;
+  }
+  .nav-dot.active {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    width: 28px;
+    border-radius: 4px;
+  }
+  .nav-dot:hover:not(.active) {
+    background: #475569;
+  }
+  .slide-number {
+    font-size: 12px;
+    color: #475569;
+    font-weight: 500;
+    min-width: 38px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ===== Lists ===== */
+  ul { list-style: none; }
+  ul li {
+    padding: 5px 0;
+    position: relative;
+    padding-left: 20px;
+  }
+  ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3b82f6;
+    opacity: 0.6;
+  }
+  ul li.listed::before {
+    content: '';
+  }
+  .list-check li { padding-left: 28px; }
+  .list-check li::before {
+    content: '✓';
+    font-size: 14px;
+    font-weight: 700;
+    color: #34d399;
+    background: none;
+    top: 5px;
+    left: 4px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    opacity: 1;
+  }
+  .list-warn li { padding-left: 28px; }
+  .list-warn li::before {
+    content: '⚠';
+    font-size: 13px;
+    background: none;
+    top: 5px;
+    left: 4px;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    opacity: 1;
+  }
+
+  /* ===== Misc ===== */
+  .text-center { text-align: center; }
+  .mt-4 { margin-top: 16px; }
+  .mt-6 { margin-top: 24px; }
+  .mt-8 { margin-top: 32px; }
+  .mb-4 { margin-bottom: 16px; }
+  .gap-sm { gap: 8px; }
+  .flex { display: flex; }
+  .flex-center { display: flex; align-items: center; justify-content: center; }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(71,85,105,0.3), transparent);
+    margin: 16px 0;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    .slide { padding: 32px 24px; }
+    h1 { font-size: 34px; }
+    h2 { font-size: 26px; }
+    .subtitle { font-size: 15px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .metric-grid { grid-template-columns: 1fr; }
+    .metric-card .metric-value { font-size: 30px; }
+    .timeline { flex-wrap: wrap; }
+    .timeline-item { min-width: calc(50% - 3px); }
+    .nav-bar { gap: 8px; padding: 6px 14px; bottom: 16px; }
+    .nav-btn { font-size: 16px; padding: 4px 8px; }
+    .comp-table thead th:first-child { width: auto; }
+    .comp-table { font-size: 12px; }
+    .comp-table tbody td { font-size: 11px; padding: 8px 10px; }
+    .comp-table thead th { padding: 8px 10px; }
+    .metric-compare .before { font-size: 18px; }
+    .metric-compare .after { font-size: 18px; }
+  }
+  @media (max-width: 480px) {
+    .slide { padding: 20px 16px; }
+    h1 { font-size: 26px; }
+    h2 { font-size: 20px; }
+    .timeline-item { min-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slides-container" id="slidesContainer">
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 1 — TITLE -->
+  <!-- ============================================================ -->
+  <section class="slide slide-title">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+    <div class="slide-content text-center">
+      <div style="margin-bottom: 20px; display: flex; justify-content: center; gap: 8px;">
+        <span class="tag" style="background:rgba(139,92,246,0.12); color:#c4b5fd; border:1px solid rgba(139,92,246,0.2);">🤖 AI Agent</span>
+        <span class="tag" style="background:rgba(59,130,246,0.12); color:#93c5fd; border:1px solid rgba(59,130,246,0.2);">⚡ n8n</span>
+        <span class="tag" style="background:rgba(16,185,129,0.12); color:#6ee7b7; border:1px solid rgba(16,185,129,0.2);">🔄 Đa kênh</span>
+      </div>
+      <h1>AI Sale Agent</h1>
+      <p style="font-size: 22px; color: #64748b; font-weight: 400; margin-bottom: 8px; letter-spacing: -0.3px;">
+        Giải pháp tự động hóa bán hàng đa kênh
+      </p>
+      <p style="font-size: 15px; color: #475569; max-width: 520px; margin: 0 auto; line-height: 1.7;">
+        Facebook · Zalo · Shopee → AI xử lý thông minh → Tự động phản hồi &amp; điều hướng lead
+      </p>
+
+      <div style="margin-top: 48px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <div style="background:rgba(30,41,59,0.5); border:1px solid rgba(71,85,105,0.2); border-radius:14px; padding:18px 28px; text-align:center; min-width:150px; backdrop-filter:blur(8px);">
+          <div style="font-size:32px; font-weight:800; color:#60a5fa; line-height:1;">3</div>
+          <div style="font-size:12px; color:#64748b; margin-top:4px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Kênh tích hợp</div>
+        </div>
+        <div style="background:rgba(30,41,59,0.5); border:1px solid rgba(71,85,105,0.2); border-radius:14px; padding:18px 28px; text-align:center; min-width:150px; backdrop-filter:blur(8px);">
+          <div style="font-size:32px; font-weight:800; color:#a78bfa; line-height:1;">&lt;3s</div>
+          <div style="font-size:12px; color:#64748b; margin-top:4px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Phản hồi đầu</div>
+        </div>
+        <div style="background:rgba(30,41,59,0.5); border:1px solid rgba(71,85,105,0.2); border-radius:14px; padding:18px 28px; text-align:center; min-width:150px; backdrop-filter:blur(8px);">
+          <div style="font-size:32px; font-weight:800; color:#34d399; line-height:1;">60-80%</div>
+          <div style="font-size:12px; color:#64748b; margin-top:4px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Giảm tải Sale</div>
+        </div>
+        <div style="background:rgba(30,41,59,0.5); border:1px solid rgba(71,85,105,0.2); border-radius:14px; padding:18px 28px; text-align:center; min-width:150px; backdrop-filter:blur(8px);">
+          <div style="font-size:32px; font-weight:800; color:#fbbf24; line-height:1;">24/7</div>
+          <div style="font-size:12px; color:#64748b; margin-top:4px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Hoạt động liên tục</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 2 — PROBLEM -->
+  <!-- ============================================================ -->
+  <section class="slide slide-gradient">
+    <div class="grid-overlay"></div>
+    <div class="slide-content">
+      <h2>
+        Vấn đề &amp; Thách thức
+        <span class="accent-line"></span>
+      </h2>
+      <p class="subtitle">Quy trình bán hàng thủ công đang bị nghẽn ở đâu?</p>
+
+      <div class="grid-2">
+        <div class="glass glass-card">
+          <div class="card-icon">🔴</div>
+          <div class="card-label">Điểm nghẽn hiện tại</div>
+          <ul style="margin-top:8px;">
+            <li>1 Sale chỉ xử lý <strong style="color:#f87171;">1 chat tại 1 thời điểm</strong></li>
+            <li><strong style="color:#f87171;">60-70%</strong> tin nhắn đầu là hỏi giá / tồn kho — lặp lại</li>
+            <li><strong style="color:#f87171;">20-30%</strong> tin nhắn là spam / hỏi chơi</li>
+            <li>Lead chờ lâu → <strong style="color:#f87171;">mất 30-50%</strong> đơn hàng</li>
+            <li>Không scale được vào giờ cao điểm / ngày sale lớn</li>
+          </ul>
+        </div>
+        <div class="glass glass-card">
+          <div class="card-icon">🟢</div>
+          <div class="card-label">Tác động sau giải pháp</div>
+          <ul style="margin-top:8px;">
+            <li>Phản hồi <strong style="color:#34d399;">&lt;3 giây</strong> — không để KH chờ đợi</li>
+            <li>AI xử lý <strong style="color:#34d399;">đa luồng</strong>, không giới hạn số chat</li>
+            <li>Sàng lọc tự động → chỉ chuyển <strong style="color:#34d399;">lead chất lượng</strong></li>
+            <li>Sale tập trung <strong style="color:#34d399;">chốt đơn</strong>, không tốn thời gian sàng lọc</li>
+            <li>Hoạt động <strong style="color:#34d399;">24/7</strong> — kể cả ngoài giờ hành chính</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:16px; margin-top:16px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:8px; background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.12); border-radius:8px; padding:8px 14px;">
+          <span style="font-size:16px;">⏱</span>
+          <span style="font-size:13px; color:#fca5a5;">Phản hồi đầu: <strong>5-15 phút</strong></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.12); border-radius:8px; padding:8px 14px;">
+          <span style="font-size:16px;">📊</span>
+          <span style="font-size:13px; color:#fca5a5;">Xử lý 1 lead: <strong>15-40 phút</strong></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.12); border-radius:8px; padding:8px 14px;">
+          <span style="font-size:16px;">⚠️</span>
+          <span style="font-size:13px; color:#fca5a5;">Lead mất: <strong>30-50%</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 3 — CURRENT WORKFLOW -->
+  <!-- ============================================================ -->
+  <section class="slide slide-dark">
+    <div class="grid-overlay"></div>
+    <div class="slide-content">
+      <h2>
+        Workflow Hiện tại
+        <span class="accent-line"></span>
+      </h2>
+      <p class="subtitle">Dòng chảy xử lý tin nhắn thủ công — tắc nghẽn tại con người</p>
+
+      <div class="grid-2" style="gap:16px; margin-bottom:24px;">
+        <div class="glass glass-card" style="padding:18px 18px 16px; border-color:rgba(239,68,68,0.18);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px;">
+            <div style="font-size:13px; font-weight:700; color:#f87171; text-transform:uppercase; letter-spacing:0.7px;">Trước AI Agent</div>
+            <div style="font-size:11px; color:#64748b;">Xử lý thủ công, tuần tự</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center;">
+            <div style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#93c5fd;">📩 KH nhắn tin</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.25); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#fca5a5;">⏳ Chờ Sale rảnh</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#fcd34d;">🔍 Hỏi lại thông tin</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#6ee7b7;">💬 Tư vấn</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#c4b5fd;">✅ Chốt đơn</div>
+          </div>
+          <div style="color:#64748b; font-size:12px; margin-top:12px; line-height:1.6; text-align:center;">
+            Mỗi bước phụ thuộc con người, dễ nghẽn khi nhiều inbox cùng lúc.
+          </div>
+        </div>
+        <div class="glass glass-card" style="padding:18px 18px 16px; border-color:rgba(16,185,129,0.18);">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px;">
+            <div style="font-size:13px; font-weight:700; color:#34d399; text-transform:uppercase; letter-spacing:0.7px;">Sau AI Agent</div>
+            <div style="font-size:11px; color:#64748b;">Xử lý song song, tự động hóa</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center;">
+            <div style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#93c5fd;">📩 KH nhắn tin</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.24); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:600; color:#c4b5fd;">⚡ AI phản hồi</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#fcd34d;">🔍 AI phân loại</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#6ee7b7;">👤 Sale nhận lead</div>
+            <span style="color:#334155; font-size:16px;">→</span>
+            <div style="background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; color:#c4b5fd;">✅ Chốt đơn</div>
+          </div>
+          <div style="color:#64748b; font-size:12px; margin-top:12px; line-height:1.6; text-align:center;">
+            AI xử lý phần lặp lại trước, Sale chỉ vào đúng đoạn cần chốt.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="glass glass-card text-center" style="padding:20px 16px;">
+          <div style="font-size:36px; font-weight:900; color:#f87171; line-height:1;">5-15<span style="font-size:14px; font-weight:400; color:#475569;"> phút</span></div>
+          <div style="font-size:12px; color:#64748b; margin-top:4px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Thời gian phản hồi đầu</div>
+          <div style="font-size:11px; color:#475569; margin-top:2px;">KH chờ → dễ bỏ đi</div>
+        </div>
+        <div class="glass glass-card text-center" style="padding:20px 16px;">
+          <div style="font-size:36px; font-weight:900; color:#f87171; line-height:1;">15-40<span style="font-size:14px; font-weight:400; color:#475569;"> phút</span></div>
+          <div style="font-size:12px; color:#64748b; margin-top:4px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Xử lý 1 lead</div>
+          <div style="font-size:11px; color:#475569; margin-top:2px;">Tốn thời gian cho lead không chất lượng</div>
+        </div>
+        <div class="glass glass-card text-center" style="padding:20px 16px;">
+          <div style="font-size:36px; font-weight:900; color:#f87171; line-height:1;">30-50<span style="font-size:14px; font-weight:400; color:#475569;">%</span></div>
+          <div style="font-size:12px; color:#64748b; margin-top:4px; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Lead bị mất</div>
+          <div style="font-size:11px; color:#475569; margin-top:2px;">Không phản hồi kịp → mất đơn</div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px; background:rgba(239,68,68,0.04); border:1px dashed rgba(239,68,68,0.15); border-radius:10px; padding:12px 20px; text-align:center;">
+        <span style="font-size:14px; color:#fca5a5;">⚠ Spam / Hỏi chơi chiếm <strong>20-30%</strong> — không được sàng lọc trước → mất thời gian của Sale</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 4 — SYSTEM ARCHITECTURE SVG -->
+  <!-- ============================================================ -->
+  <section class="slide slide-gradient">
+    <div class="grid-overlay"></div>
+    <div class="slide-content" style="max-width: 1020px;">
+      <h2>
+        Kiến trúc Hệ thống
+        <span class="accent-line"></span>
+      </h2>
+      <p class="subtitle">Channel SDK → n8n AI Agent → Trigger Rules → Hành động</p>
+      <div class="svg-container">
+        <svg width="940" height="500" viewBox="0 0 940 500" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:0 auto;">
+          <defs>
+            <filter id="g-shadow" x="-8%" y="-8%" width="116%" height="116%">
+              <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.25"/>
+            </filter>
+            <filter id="g-shadow-sm" x="-8%" y="-8%" width="116%" height="116%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.15"/>
+            </filter>
+            <marker id="g-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+            </marker>
+            <marker id="g-arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399"/>
+            </marker>
+            <marker id="g-arr-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+            </marker>
+            <marker id="g-arr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#f87171"/>
+            </marker>
+          </defs>
+
+          <rect x="0" y="0" width="940" height="500" rx="10" fill="rgba(15,23,42,0.3)"/>
+
+          <!-- Row 1: Channels -->
+          <rect x="60" y="24" width="240" height="44" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.35)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="180" y="51" text-anchor="middle" font-size="14" font-weight="600" fill="#93c5fd">📱 Facebook SDK</text>
+
+          <rect x="350" y="24" width="240" height="44" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.35)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="470" y="51" text-anchor="middle" font-size="14" font-weight="600" fill="#93c5fd">💬 Zalo SDK</text>
+
+          <rect x="640" y="24" width="240" height="44" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.35)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="760" y="51" text-anchor="middle" font-size="14" font-weight="600" fill="#93c5fd">🛒 Shopee SDK</text>
+
+          <path d="M 180 68 C 180 88, 220 92, 265 100 C 330 112, 395 118, 460 130" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#g-arr)" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 470 68 C 470 92, 470 112, 470 130" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#g-arr)" stroke-linecap="round"/>
+          <path d="M 760 68 C 760 88, 720 92, 675 100 C 610 112, 545 118, 480 130" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#g-arr)" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Row 2: n8n AI Agent -->
+          <rect x="320" y="136" width="300" height="52" rx="10" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.4)" stroke-width="1.5" filter="url(#g-shadow)"/>
+          <text x="470" y="160" text-anchor="middle" font-size="16" font-weight="700" fill="#c4b5fd">⚡ n8n AI Agent</text>
+          <text x="470" y="178" text-anchor="middle" font-size="10" fill="#6b7280">LLM + Workflow Engine + Tool Calling</text>
+
+          <!-- Arrow split -->
+          <path d="M 380 188 C 380 214, 340 214, 300 224 C 270 232, 252 238, 248 248" stroke="#34d399" stroke-width="1.5" fill="none" marker-end="url(#g-arr-g)" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 560 188 C 560 214, 600 214, 640 224 C 670 232, 688 238, 692 248" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#g-arr)" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Row 3: Auto Response + Classification -->
+          <rect x="80" y="252" width="320" height="48" rx="8" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.35)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="240" y="275" text-anchor="middle" font-size="14" font-weight="600" fill="#6ee7b7">🤖 Tự động trả lời KH</text>
+          <text x="240" y="291" text-anchor="middle" font-size="10" fill="#6b7280">Giá, tồn kho, chính sách, gợi ý SP</text>
+
+          <rect x="540" y="252" width="320" height="48" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.35)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="700" y="275" text-anchor="middle" font-size="14" font-weight="600" fill="#93c5fd">📊 Phân tích &amp; Đánh giá Lead</text>
+          <text x="700" y="291" text-anchor="middle" font-size="10" fill="#6b7280">Nóng / Ấm / Lạnh + Thu thập thông tin</text>
+
+          <!-- Feedback loop -->
+          <path d="M 400 276 C 430 276, 442 258, 442 220 C 442 132, 430 92, 402 74 C 376 57, 338 50, 290 68" stroke="#34d399" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#g-arr-g)" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="450" y="170" font-size="10" fill="#34d399" font-weight="600" transform="rotate(90,450,170)">Phản hồi tự động về KH</text>
+
+          <!-- Classify down arrow -->
+          <path d="M 700 300 L 700 348" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#g-arr-a)"/>
+
+          <!-- Row 4: Trigger area label -->
+          <rect x="40" y="358" width="860" height="1" fill="rgba(245,158,11,0.15)"/>
+          <text x="470" y="370" text-anchor="middle" font-size="9" font-weight="700" fill="#fbbf24" letter-spacing="1.5">TRIGGER RULES — ĐIỀU HƯỚNG LEAD</text>
+
+          <!-- 3 trigger boxes -->
+          <rect x="60" y="380" width="240" height="44" rx="8" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="180" y="400" text-anchor="middle" font-size="13" font-weight="600" fill="#fca5a5">🔥 Hot Lead</text>
+          <text x="180" y="416" text-anchor="middle" font-size="10" fill="#6b7280">Serve Immediately</text>
+
+          <rect x="350" y="380" width="240" height="44" rx="8" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.3)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="470" y="400" text-anchor="middle" font-size="13" font-weight="600" fill="#fcd34d">👤 Sale Online?</text>
+          <text x="470" y="416" text-anchor="middle" font-size="10" fill="#6b7280">Kiểm tra trạng thái</text>
+
+          <rect x="640" y="380" width="240" height="44" rx="8" fill="rgba(107,114,128,0.08)" stroke="rgba(107,114,128,0.3)" stroke-width="1.5" filter="url(#g-shadow-sm)"/>
+          <text x="760" y="400" text-anchor="middle" font-size="13" font-weight="600" fill="#9ca3af">🎫 Tạo Ticket</text>
+          <text x="760" y="416" text-anchor="middle" font-size="10" fill="#6b7280">Yêu cầu hỗ trợ</text>
+
+          <!-- Paths -->
+          <path d="M 700 352 C 700 366, 648 372, 560 376 C 420 380, 300 380, 180 380" stroke="#f87171" stroke-width="1.5" fill="none" marker-end="url(#g-arr-r)" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 700 352 C 700 366, 690 370, 640 374 C 590 378, 530 380, 470 380" stroke="#fbbf24" stroke-width="1.5" fill="none" marker-end="url(#g-arr-a)" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <path d="M 590 402 L 640 402" stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#g-arr)"/>
+
+          <!-- Result indicators -->
+          <text x="180" y="448" text-anchor="middle" font-size="11" fill="#f87171" font-weight="600">✅ Serve Immediately</text>
+          <text x="410" y="448" text-anchor="middle" font-size="11" fill="#34d399" font-weight="600">✅ Assign to Sale</text>
+          <text x="530" y="448" text-anchor="middle" font-size="11" fill="#9ca3af" font-weight="600">⛔ → Ticket</text>
+          <text x="760" y="448" text-anchor="middle" font-size="11" fill="#9ca3af" font-weight="600">📋 Ticket Queue</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 5 — TRIGGER RULES DEEP DIVE -->
+  <!-- ============================================================ -->
+  <section class="slide slide-dark">
+    <div class="grid-overlay"></div>
+    <div class="slide-content">
+      <h2>
+        Trigger Rules — Luồng quyết định
+        <span class="accent-line"></span>
+      </h2>
+      <p class="subtitle">Cách AI định tuyến lead sau khi xử lý — đảm bảo không lead nào bị rơi</p>
+
+      <div style="display:flex; gap:20px;">
+        <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+          <!-- Step 1 -->
+          <div class="glass glass-card" style="padding:14px 18px;">
+            <div class="step-item" style="padding:0;">
+              <div class="step-num" style="background:rgba(59,130,246,0.2); color:#93c5fd;">1</div>
+              <div>
+                <div style="font-size:15px; font-weight:600; color:#e2e8f0;">📩 Lead vào hệ thống</div>
+                <div style="font-size:13px; color:#64748b;">AI phân tích nội dung, phân loại intent, thu thập thông tin</div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="glass glass-card" style="padding:14px 18px; border-color:rgba(239,68,68,0.2);">
+            <div class="step-item" style="padding:0;">
+              <div class="step-num" style="background:rgba(239,68,68,0.15); color:#fca5a5;">2</div>
+              <div>
+                <div style="font-size:15px; font-weight:600; color:#f87171;">🔥 Hot Lead?</div>
+                <div style="font-size:13px; color:#64748b;">Ưu tiên cao nhất — <strong style="color:#fca5a5;">Serve Immediately</strong>, không xếp hàng, chỉ định Sale bất kỳ đang rảnh</div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="glass glass-card" style="padding:14px 18px; border-color:rgba(245,158,11,0.2);">
+            <div class="step-item" style="padding:0;">
+              <div class="step-num" style="background:rgba(245,158,11,0.15); color:#fcd34d;">3</div>
+              <div>
+                <div style="font-size:15px; font-weight:600; color:#fbbf24;">👤 Sale thường — Check Online?</div>
+                <div style="font-size:13px; color:#64748b;">
+                  <span style="color:#34d399;">✅ Có Sale online &amp; rảnh</span> → Phân bổ cho Sale ít việc nhất<br>
+                  <span style="color:#f87171;">⛔ Không ai online</span> → <strong style="color:#9ca3af;">Tạo Ticket</strong> — KH không bị bỏ rơi
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side stats -->
+        <div style="flex:0 0 260px; display:flex; flex-direction:column; gap:10px;">
+          <div class="glass glass-card text-center" style="padding:18px;">
+            <div style="font-size:12px; color:#64748b; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Mục tiêu</div>
+            <div style="font-size:22px; font-weight:800; color:#34d399; margin-top:4px;">0 lead bị bỏ lỡ</div>
+          </div>
+          <div class="glass glass-card" style="padding:16px 18px;">
+            <div style="font-size:12px; color:#64748b; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Nguyên tắc routing</div>
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:8px; height:8px; border-radius:50%; background:#f87171;"></span>
+                <span style="font-size:13px; color:#94a3b8;">Hot lead → <span style="color:#f87171; font-weight:600;">serve ngay</span></span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:8px; height:8px; border-radius:50%; background:#fbbf24;"></span>
+                <span style="font-size:13px; color:#94a3b8;">Lead ấm → <span style="color:#fbbf24; font-weight:600;">chờ Sale rảnh</span></span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:8px; height:8px; border-radius:50%; background:#34d399;"></span>
+                <span style="font-size:13px; color:#94a3b8;">Lead lạnh → <span style="color:#34d399; font-weight:600;">tự động nuôi</span></span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="width:8px; height:8px; border-radius:50%; background:#475569;"></span>
+                <span style="font-size:13px; color:#94a3b8;">Spam → <span style="color:#64748b;">tự động lọc</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="glass glass-card text-center" style="padding:18px; border-color:rgba(16,185,129,0.15);">
+            <div style="font-size:28px; font-weight:800; line-height:1;">
+              <span class="text-gradient-green">+10-15%</span>
+            </div>
+            <div style="font-size:12px; color:#64748b; margin-top:4px;">Tỉ lệ chuyển đổi kỳ vọng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 6 — METRICS -->
+  <!-- ============================================================ -->
+  <section class="slide slide-gradient">
+    <div class="grid-overlay"></div>
+    <div class="slide-content">
+      <h2>
+        Kết quả &amp; Chỉ số
+        <span class="accent-line"></span>
+      </h2>
+      <p class="subtitle">Baseline → Target — đo lường trực tiếp trên hệ thống thật</p>
+
+      <div class="grid-2" style="gap:12px;">
+        <div class="glass glass-card" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+            <span style="font-size:13px; color:#94a3b8; font-weight:500;">⏱ Thời gian phản hồi đầu</span>
+            <span class="tag tag-sm" style="background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.12);">First Response Time</span>
+          </div>
+          <div class="metric-compare">
+            <span class="before">5-15'</span>
+            <span class="arrow">→</span>
+            <span class="after">&lt;30s</span>
+          </div>
+        </div>
+        <div class="glass glass-card" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+            <span style="font-size:13px; color:#94a3b8; font-weight:500;">📈 Tỉ lệ chuyển đổi</span>
+            <span class="tag tag-sm" style="background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.12);">Conversion Rate</span>
+          </div>
+          <div class="metric-compare">
+            <span class="before">15-25%</span>
+            <span class="arrow">→</span>
+            <span class="after">30-40%</span>
+          </div>
+        </div>
+        <div class="glass glass-card" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+            <span style="font-size:13px; color:#94a3b8; font-weight:500;">📊 Chat / Sale / ngày</span>
+            <span class="tag tag-sm" style="background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.12);">Chats per Sale</span>
+          </div>
+          <div class="metric-compare">
+            <span class="before">30-50</span>
+            <span class="arrow">→</span>
+            <span class="after">80-120</span>
+          </div>
+        </div>
+        <div class="glass glass-card" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+            <span style="font-size:13px; color:#94a3b8; font-weight:500;">⚠ Lead bị bỏ lỡ</span>
+            <span class="tag tag-sm" style="background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.12);">Missed Lead Rate</span>
+          </div>
+          <div class="metric-compare">
+            <span class="before">20-35%</span>
+            <span class="arrow">→</span>
+            <span class="after">&lt;5%</span>
+          </div>
+        </div>
+        <div class="glass glass-card" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+            <span style="font-size:13px; color:#94a3b8; font-weight:500;">💰 Chi phí / Lead</span>
+            <span class="tag tag-sm" style="background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.12);">Cost per Lead</span>
+          </div>
+          <div class="metric-compare">
+            <span class="before">15-25k</span>
+            <span class="arrow">→</span>
+            <span class="after">5-10k</span>
+          </div>
+        </div>
+        <div class="glass glass-card" style="padding:14px 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2px;">
+            <span style="font-size:13px; color:#94a3b8; font-weight:500;">😊 Hài lòng KH</span>
+            <span class="tag tag-sm" style="background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.12);">CSAT</span>
+          </div>
+          <div class="metric-compare">
+            <span class="before">70-80%</span>
+            <span class="arrow">→</span>
+            <span class="after">&gt;85%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 7 — COMPARISON TABLE -->
+  <!-- ============================================================ -->
+  <section class="slide slide-dark">
+    <div class="grid-overlay"></div>
+    <div class="slide-content">
+      <h2>
+        Tại sao chọn AI Agent?
+        <span class="accent-line"></span>
+      </h2>
+      <p class="subtitle">So sánh 4 phương án — lựa chọn dựa trên đặc thù bài toán bán hàng hội thoại</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Tiêu chí</th>
+            <th>No AI</th>
+            <th>Rule-based</th>
+            <th>Workflow</th>
+            <th style="color:#60a5fa;">AI Agent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:#cbd5e1; font-weight:500;">Xử lý ngôn ngữ tự nhiên</td>
+            <td style="color:#94a3b8;">Con người</td>
+            <td class="td-bad">Kém</td>
+            <td class="td-bad">Không có</td>
+            <td class="td-good col-agent">Tốt ✓</td>
+          </tr>
+          <tr>
+            <td style="color:#cbd5e1; font-weight:500;">Chi phí vận hành</td>
+            <td class="td-bad">Cao nhất</td>
+            <td style="color:#94a3b8;">Thấp</td>
+            <td style="color:#94a3b8;">Trung bình</td>
+            <td class="td-mid col-agent">TB (token)</td>
+          </tr>
+          <tr>
+            <td style="color:#cbd5e1; font-weight:500;">Khả năng scale</td>
+            <td class="td-bad">Không</td>
+            <td class="td-mid">Trung bình</td>
+            <td style="color:#94a3b8;">Tốt</td>
+            <td class="td-good col-agent">Rất tốt ✓</td>
+          </tr>
+          <tr>
+            <td style="color:#cbd5e1; font-weight:500;">Tỉ lệ tự động hóa</td>
+            <td class="td-bad">0%</td>
+            <td class="td-mid">20-30%</td>
+            <td style="color:#94a3b8;">30-40%</td>
+            <td class="td-good col-agent">60-80% ✓</td>
+          </tr>
+          <tr>
+            <td style="color:#cbd5e1; font-weight:500;">Hội thoại phức tạp</td>
+            <td style="color:#94a3b8;">Tốt</td>
+            <td class="td-bad">Kém</td>
+            <td class="td-bad">Kém</td>
+            <td class="td-good col-agent">Tốt ✓</td>
+          </tr>
+          <tr>
+            <td style="color:#cbd5e1; font-weight:500;">Bảo trì</td>
+            <td style="color:#94a3b8;">Quản lý nhân sự</td>
+            <td style="color:#94a3b8;">Update rule</td>
+            <td style="color:#94a3b8;">Update kịch bản</td>
+            <td class="col-agent">Fine-tune + Prompt</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="grid-2 mt-6" style="gap:16px;">
+        <div class="glass glass-card" style="padding:16px 20px; border-color:rgba(16,185,129,0.15);">
+          <div style="font-size:13px; font-weight:700; color:#34d399; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">✅ AI Agent được phép</div>
+          <ul class="list-check" style="font-size:13px;">
+            <li>Trả lời giá, tồn kho, chính sách, gợi ý sản phẩm</li>
+            <li>Phân loại lead: Nóng / Ấm / Lạnh / Spam</li>
+            <li>Thu thập thông tin KH (tên, SĐT, nhu cầu)</li>
+            <li>Gợi ý sản phẩm dựa trên nhu cầu (RAG)</li>
+            <li>Chuyển chat cho Sale thực khi cần</li>
+          </ul>
+        </div>
+        <div class="glass glass-card" style="padding:16px 20px; border-color:rgba(245,158,11,0.15);">
+          <div style="font-size:13px; font-weight:700; color:#fbbf24; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">⚠ Cần Human-in-the-loop</div>
+          <ul class="list-warn" style="font-size:13px;">
+            <li>Khiếu nại phức tạp (hoàn tiền, SP lỗi)</li>
+            <li>Yêu cầu giảm giá đặc biệt / buôn sỉ</li>
+            <li>KH không hài lòng với AI</li>
+            <li>AI confidence &lt; 70%</li>
+            <li>Xác nhận tạo đơn thanh toán</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 8 — ROADMAP -->
+  <!-- ============================================================ -->
+  <section class="slide slide-gradient">
+    <div class="grid-overlay"></div>
+    <div class="slide-content">
+      <h2>
+        Lộ trình &amp; Kế hoạch
+        <span class="accent-line"></span>
+      </h2>
+      <p class="subtitle">8 tuần — từ MVP đến quyết định Go / No-Go dựa trên số liệu thực tế</p>
+
+      <div class="timeline">
+        <div class="timeline-item" style="border-color:rgba(59,130,246,0.25);">
+          <div class="tl-week" style="color:#60a5fa;">TUẦN 1-2</div>
+          <div class="tl-title">MVP Core</div>
+          <div class="tl-desc">5 kịch bản chat<br>Test internal</div>
+        </div>
+        <div class="timeline-item" style="border-color:rgba(139,92,246,0.25);">
+          <div class="tl-week" style="color:#a78bfa;">TUẦN 3-4</div>
+          <div class="tl-title">Pilot</div>
+          <div class="tl-desc">1 shop, 5 sale<br>Đo metric thực tế</div>
+        </div>
+        <div class="timeline-item" style="border-color:rgba(245,158,11,0.25);">
+          <div class="tl-week" style="color:#fbbf24;">TUẦN 5-6</div>
+          <div class="tl-title">Tối ưu</div>
+          <div class="tl-desc">Tinh chỉnh prompt<br>Threshold + mở rộng</div>
+        </div>
+        <div class="timeline-item" style="border-color:rgba(16,185,129,0.25);">
+          <div class="tl-week" style="color:#34d399;">TUẦN 7-8</div>
+          <div class="tl-title">Quyết định</div>
+          <div class="tl-desc">Go / No-Go<br>Dựa trên số liệu</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="gap:16px;">
+        <div class="glass glass-card" style="padding:18px 20px;">
+          <div style="font-size:13px; font-weight:700; color:#fbbf24; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">🔬 Cần verify qua Pilot</div>
+          <ul style="font-size:13px;">
+            <li>AI phân loại intent chính xác <strong style="color:#fbbf24;">&gt;85%</strong>?</li>
+            <li>KH có chấp nhận chat với AI không?</li>
+            <li>Tiết kiệm <strong style="color:#fbbf24;">&gt;60%</strong> thời gian Sale?</li>
+            <li>Tỉ lệ chuyển đổi tăng <strong style="color:#fbbf24;">&gt;10%</strong>?</li>
+          </ul>
+        </div>
+        <div class="glass glass-card" style="padding:18px 20px; border-color:rgba(16,185,129,0.2);">
+          <div style="font-size:13px; font-weight:700; color:#34d399; margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;">✅ Quyết định: GO</div>
+          <ul class="list-check" style="font-size:13px;">
+            <li>Nhu cầu thị trường rõ ràng, verified</li>
+            <li>AI đã đủ trưởng thành (GPT-4, Claude 3.5)</li>
+            <li>Chi phí LLM giảm 10-20x trong 2 năm</li>
+            <li>MVP nhanh (2-4 tuần) trước khi scale</li>
+            <li>Rủi ro thấp — không ảnh hưởng workflow cũ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SLIDE 9 — END -->
+  <!-- ============================================================ -->
+  <section class="slide slide-title">
+    <div class="orb orb-1" style="width:500px; height:500px; background:radial-gradient(circle, rgba(16,185,129,0.1), transparent); top:-150px; left:-200px;"></div>
+    <div class="orb orb-2" style="width:400px; height:400px; background:radial-gradient(circle, rgba(139,92,246,0.1), transparent); bottom:-150px; right:-100px;"></div>
+    <div class="grid-overlay"></div>
+    <div class="slide-content text-center">
+      <div style="margin-bottom: 16px;">
+        <span class="tag" style="background:rgba(16,185,129,0.1); color:#6ee7b7; border:1px solid rgba(16,185,129,0.15); font-size:14px; padding:6px 18px;">🚀 Ready to build</span>
+      </div>
+      <h1 style="font-size:72px;">Cảm ơn!</h1>
+      <p style="font-size:26px; color:#64748b; font-weight:300; margin-top:8px;">Q &amp; A</p>
+      <div style="margin-top:40px; display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-size:13px; color:#64748b; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Sản phẩm</div>
+          <div style="font-size:16px; color:#e2e8f0; font-weight:600; margin-top:4px;">AI Sale Agent</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:13px; color:#64748b; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Kênh tích hợp</div>
+          <div style="font-size:16px; color:#e2e8f0; font-weight:600; margin-top:4px;">Facebook · Zalo · Shopee</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:13px; color:#64748b; font-weight:500; text-transform:uppercase; letter-spacing:0.5px;">Nền tảng AI</div>
+          <div style="font-size:16px; color:#e2e8f0; font-weight:600; margin-top:4px;">n8n + LLM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Navigation -->
+<div class="nav-bar">
+  <button class="nav-btn" onclick="prevSlide()" title="Previous">‹</button>
+  <div class="nav-dots" id="navDots"></div>
+  <span class="slide-number" id="slideNumber">1 / 9</span>
+  <button class="nav-btn" onclick="nextSlide()" title="Next">›</button>
+</div>
+
+<script>
+  const container = document.getElementById('slidesContainer');
+  const slides = container.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let current = 0;
+  let isTransitioning = false;
+
+  function renderDots() {
+    const dotsContainer = document.getElementById('navDots');
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'nav-dot' + (i === current ? ' active' : '');
+      dot.onclick = () => goToSlide(i);
+      dotsContainer.appendChild(dot);
+    }
+    document.getElementById('slideNumber').textContent = (current + 1) + ' / ' + totalSlides;
+  }
+
+  function goToSlide(index) {
+    if (isTransitioning) return;
+    if (index < 0) index = 0;
+    if (index >= totalSlides) index = totalSlides - 1;
+    if (index === current) return;
+    isTransitioning = true;
+    current = index;
+    container.style.transform = 'translateX(-' + (current * 100) + 'vw)';
+    renderDots();
+    setTimeout(() => { isTransitioning = false; }, 700);
+  }
+
+  function nextSlide() { goToSlide(current + 1); }
+  function prevSlide() { goToSlide(current - 1); }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+    if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+    if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides - 1); }
+  });
+
+  // Touch
+  let touchStartX = 0, touchEndX = 0;
+  container.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  container.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) { if (diff > 0) nextSlide(); else prevSlide(); }
+  }, { passive: true });
+
+  // Mouse wheel
+  let wheelTimeout = false;
+  container.addEventListener('wheel', e => {
+    if (wheelTimeout) return;
+    wheelTimeout = true;
+    if (e.deltaY > 0) nextSlide(); else prevSlide();
+    setTimeout(() => { wheelTimeout = false; }, 800);
+  }, { passive: true });
+
+  renderDots();
+</script>
+</body>
+</html>
